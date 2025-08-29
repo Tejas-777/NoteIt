@@ -5,19 +5,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.platform.ComposeView
-import com.example.noteit.MainActivity
 import com.example.noteit.model.Note
 import com.example.noteit.viewmodel.NoteViewModel
-import com.example.noteit.viewmodel.NoteViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddEditNoteActivity : ComponentActivity() {
 
-    private lateinit var viewModel: NoteViewModel
+    private val viewModel: NoteViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel = NoteViewModelFactory(applicationContext).create(NoteViewModel::class.java)
 
 
         val noteId = intent.getIntExtra("note_id", -1)
