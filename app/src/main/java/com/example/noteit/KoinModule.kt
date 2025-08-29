@@ -7,4 +7,7 @@ import org.koin.dsl.module
 
 val appModule = module {
 
+    single { NoteRepository(get()) }
+    viewModel { NoteViewModel(get()) }
+
 }
