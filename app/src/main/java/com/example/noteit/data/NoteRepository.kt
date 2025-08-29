@@ -34,7 +34,10 @@ class NoteRepository(context: Context) {
         sharedPreferences.edit().putString(NOTES_KEY, json).apply()
     }
 
-    fun getAllNotes(): List<Note> = noteList
+    fun getAllNotes(): List<Note> {
+        noteList = loadNotes()
+        return noteList
+    }
 
     fun addNote(title: String, content: String) {
         val newId = if (noteList.isEmpty()) 1 else noteList.maxOf { it.id ?: 0 } + 1
