@@ -2,26 +2,24 @@ package com.example.noteit
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.noteit.databinding.ActivityMainBinding
 import com.example.noteit.ui.home.AddEditNoteActivity
 import com.example.noteit.ui.home.NoteAdapter
 import com.example.noteit.viewmodel.NoteViewModel
-import com.example.noteit.viewmodel.NoteViewModelFactory
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var noteAdapter: NoteAdapter
 
-    private val viewModel: NoteViewModel by viewModels {
-        NoteViewModelFactory(applicationContext)
-    }
 
+
+    private val viewModel: NoteViewModel by viewModel()
 
     private val addEditNoteLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
